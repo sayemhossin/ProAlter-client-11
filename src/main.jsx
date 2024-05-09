@@ -10,6 +10,10 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './Components/AuthProvider';
+import Queries from './Pages/Queries';
+import RecommendationsForMe from './Pages/RecommendationsForMe';
+import MyQueries from './Pages/MyQueries';
+import MyRecommendations from './Pages/MyRecommendations';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +23,22 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>
+      },
+      {
+        path:'/queries',
+        element:<Queries></Queries>
+      },
+      {
+        path:'/recommendationsforme',
+        element:<RecommendationsForMe></RecommendationsForMe>
+      },
+      {
+        path:'/myqueries',
+        element:<MyQueries></MyQueries>
+      },
+      {
+        path:'/myrecommendations',
+        element:<MyRecommendations></MyRecommendations>
       },
       {
         path:'/login',
