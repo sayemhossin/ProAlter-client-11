@@ -1,18 +1,32 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './Navbar.css'
+import { useContext } from "react";
+import { AuthContext } from "./AuthProvider";
 const Navbar = () => {
+    const {user,logOut }= useContext(AuthContext)
+console.log(user)
+
 
     const link = <>
 <div className="flex  flex-col text-[15px] lg:flex-row" id="sidebar">
 <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/queries'}>Queries</NavLink></li>
-    <li><NavLink to={'/recommendationsforme'}>Recommendations For Me</NavLink></li>
+   {
+    user && <>
+     <li><NavLink to={'/recommendationsforme'}>Recommendations For Me</NavLink></li>
     <li><NavLink to={'/myqueries'}>My Queries</NavLink></li>
     <li><NavLink to={'/myrecommendations'}>My recommendations</NavLink></li>
+    </>
+   }
 </div>
     </>
 
-
+const handleLogout = () =>{
+    logOut()
+    .then()
+    .catch()
+  }
+  
 
     return (
 
@@ -37,7 +51,19 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Logout</a>
+  {
+  user ?<>
+  <div>
+  <button
+          onClick={handleLogout}
+          className="btn p-1 text-[12px] md:text-[17px] md:p-4 bg-[#990000] hover:bg-[#7a1c1c] text-[#ecf0f1]">Logout</button>
+  </div>
+  </>
+    :
+    <Link to='/login'>
+      <button className="btn  bg-[#990000] hover:bg-[#7a1c1c] text-[#ecf0f1]">Login</button>
+    </Link>
+}
   </div>
 </div>
     );
