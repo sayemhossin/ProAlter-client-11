@@ -9,7 +9,10 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
-
+import image1 from '../assets/image/no3.jpg'
+import image2 from '../assets/image/no2.webp'
+import image3 from '../assets/image/no1.jpg'
+import Slide from './Slide'
 
 const Slider = () => {
     return (
@@ -20,7 +23,7 @@ const Slider = () => {
         centeredSlides={true}
         loop={true}
         autoplay={{
-          delay: 4000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -31,13 +34,22 @@ const Slider = () => {
         className='mySwiper'
       >
         <SwiperSlide>
-         <img className='w-full' src="https://i.ibb.co/zZv3MXz/holiday-villa-beach-resort.jpg" alt="" />
+        <Slide
+            image={image1}
+            text='Encapsulates the essence of the website. It signifies a platform where users come together to share insights, recommendations, and queries about alternative products. This community-driven approach fosters collaboration, empowers users to make informed decisions, and promotes a culture of knowledge sharing and support'
+          />
         </SwiperSlide>
         <SwiperSlide>
-        <img className='w-full' src="https://i.ibb.co/zZv3MXz/holiday-villa-beach-resort.jpg" alt="" />
+        <Slide
+            image={image2}
+            text='Encapsulates the essence of the website. It signifies a platform where users come together to share insights, recommendations, and queries about alternative products. This community-driven approach fosters collaboration, empowers users to make informed decisions, and promotes a culture of knowledge sharing and support'
+          />
         </SwiperSlide>
         <SwiperSlide>
-        <img className='w-full' src="https://i.ibb.co/zZv3MXz/holiday-villa-beach-resort.jpg" alt="" />
+        <Slide
+            image={image3}
+            text='Encapsulates the essence of the website. It signifies a platform where users come together to share insights, recommendations, and queries about alternative products. This community-driven approach fosters collaboration, empowers users to make informed decisions, and promotes a culture of knowledge sharing and support'
+          />
         </SwiperSlide>
       </Swiper>
     </div>
