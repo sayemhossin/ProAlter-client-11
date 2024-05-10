@@ -8,6 +8,10 @@ const MyQueries = () => {
     const [queries, setQueries] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
+
+
+    
     useEffect(() => {
         setLoading(true);
         fetch(`http://localhost:5000/myquery/${user?.email}`)
