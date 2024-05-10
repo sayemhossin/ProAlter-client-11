@@ -11,7 +11,7 @@ const AddQuery = () => {
     const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
 
-    // console.log(`Current date: ${day}/${month}/${year}`);
+    console.log(`Current date: ${day}/${month}/${year}`);
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -52,6 +52,9 @@ const AddQuery = () => {
                 toast.success('Added Successfully')
             })
         form.reset()
+
+
+
 
     }
 

@@ -5,7 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import logo from '../assets/image/logo.png'
 const Navbar = () => {
     const {user,logOut }= useContext(AuthContext)
-console.log(user)
+
 
 const [theme,setTheme] = useState(localStorage.getItem('theme') || 'light')
 

@@ -16,44 +16,56 @@ import MyQueries from './Pages/MyQueries';
 import MyRecommendations from './Pages/MyRecommendations';
 import Error from './Pages/Error';
 import AddQuery from './Pages/AddQuery';
+import QueryDetails from './Pages/QueryDetails';
+import UpdateQuery from './Pages/UpdateQuery';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Root></Root>,
-    errorElement:<Error></Error>,
-    children:[
+    element: <Root></Root>,
+    errorElement: <Error></Error>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path:'/queries',
-        element:<Queries></Queries>
+        path: '/queries',
+        element: <Queries></Queries>
       },
       {
-        path:'/recommendationsforme',
-        element:<RecommendationsForMe></RecommendationsForMe>
+        path: '/recommendationsforme',
+        element: <RecommendationsForMe></RecommendationsForMe>
       },
       {
-        path:'/myqueries',
-        element:<MyQueries></MyQueries>
+        path: '/myqueries',
+        element: <MyQueries></MyQueries>
       },
       {
-        path:'/myrecommendations',
-        element:<MyRecommendations></MyRecommendations>
+        path: '/myrecommendations',
+        element: <MyRecommendations></MyRecommendations>
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: '/login',
+        element: <Login></Login>
       },
       {
-        path:'/register',
-        element:<Register></Register>
+        path: '/register',
+        element: <Register></Register>
       },
       {
-        path:'/addquery',
-        element:<AddQuery></AddQuery>
+        path: '/addquery',
+        element: <AddQuery></AddQuery>
+      },
+      {
+        path: '/querydetails/:id',
+        element: <QueryDetails></QueryDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`)
+      },
+      {
+        path:'/queryupdate/:id',
+        element: <UpdateQuery></UpdateQuery>,
+        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`)
       }
     ]
   },
@@ -61,8 +73,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
- <AuthProvider>
- <RouterProvider router={router} />
- </AuthProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
