@@ -14,11 +14,14 @@ import Queries from './Pages/Queries';
 import RecommendationsForMe from './Pages/RecommendationsForMe';
 import MyQueries from './Pages/MyQueries';
 import MyRecommendations from './Pages/MyRecommendations';
+import Error from './Pages/Error';
+import AddQuery from './Pages/AddQuery';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<Root></Root>,
+    errorElement:<Error></Error>,
     children:[
       {
         path:'/',
@@ -47,6 +50,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/addquery',
+        element:<AddQuery></AddQuery>
       }
     ]
   },

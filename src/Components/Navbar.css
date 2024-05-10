@@ -1,8 +1,8 @@
 #sidebar a.active {
  
     background-color: unset;
-    color: #E72929;
+    color: blue;
     font-weight: 800;
-   border: 2px solid #990000;
+   border: 2px solid blue;
 }
 
