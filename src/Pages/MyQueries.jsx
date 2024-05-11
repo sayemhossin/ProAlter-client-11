@@ -21,7 +21,9 @@ const MyQueries = () => {
                 setLoading(false);
             });
     }, [user]);
-
+    const handleDeleteQuery = (queryId) => {
+      setQueries(prevQueries => prevQueries.filter(query => query._id !== queryId));
+  };
 
 
 
@@ -68,7 +70,10 @@ const MyQueries = () => {
             ) : (
                 <div className=" grid gap-5  mt-10">
                    {
-                     queries.map((query) => <MyQuery key={query._id} query={query} />)
+                     queries.map((query) => <MyQuery key={query._id}
+                      query={query}
+                      onDelete={handleDeleteQuery}
+                      />)
                    }
                 </div>
             )}

@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const MyQuery = ({ query }) => {
+const MyQuery = ({ query ,onDelete}) => {
 
 
     const handleDelete = (id) => {
-        console.log(id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -23,13 +22,14 @@ const MyQuery = ({ query }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        window.location.reload();
+                     
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your query has been deleted.",
                                 icon: "success"
                             });
+                            onDelete(id)
 
                         }
                     })

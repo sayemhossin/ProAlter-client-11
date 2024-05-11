@@ -25,7 +25,7 @@ const Query = ({query}) => {
     <div className="flex justify-around items-center">
         <h1 className="text-xl"><span className="font-semibold">Name: </span> {query.added_by.name}</h1>
         <div className="avatar">
-  <div className="md:w-16 w-10 rounded-full ml-4 ring ring-blue-700  ring-offset-2">
+  <div className="md:w-12 w-8 rounded-full ml-4 ring ring-blue-700  ring-offset-2">
     <img src={query.added_by.photo} />
   </div>
 </div>
