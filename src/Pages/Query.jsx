@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 const Query = ({query}) => {
     return (
         
-        <div className="card bg-base-100 shadow-xl p-6  ">
+        <div className="card flex  bg-base-100 shadow-xl p-6  ">
             
-        <div className=" p-8">
-        <img src={query.photo} alt="photo" />
+        <div className=" flex flex-grow justify-center  p-8">
+        <img className="" src={query.photo} alt="photo" />
+
         </div>
 
 
 
 
-        <div className="card-body p-6 ">
+        <div className="card-body p-6 flex-grow ">
             
           <h2 className="card-title">{query.title}</h2>
           <h2 className=""> <span className="font-semibold">Product Name: </span>{query.product}</h2>

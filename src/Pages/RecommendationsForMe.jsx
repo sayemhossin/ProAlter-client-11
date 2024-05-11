@@ -26,15 +26,15 @@ const RecommendationsForMe = () => {
             backgroundImage: 'linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.ibb.co/xM1BWfp/brand-20collaboration-20examples.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
-            backgroundColor: 'transparent' // Set a transparent background color if needed
+            backgroundColor: 'transparent'
         }}>
 
      
              <div className="overflow-x-auto text-white h-[70vh] md:h-[80vh]">
-                        <table className="table text-gray-300 font-bold  md:text-2xl">
+                        <table className="table text-gray-300 font-bold  lg:text-2xl">
                     {/* head */}
                     <thead>
-                    <tr className="font-bold bg-blue-400 text-gray-900  md:text-2xl">
+                    <tr className="font-bold bg-blue-400 text-gray-900  lg::text-2xl">
                             <th>No</th>
                             <th>Query product Name</th>
                             <th> Recommended Product</th>
