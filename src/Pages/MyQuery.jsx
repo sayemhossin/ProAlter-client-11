@@ -49,14 +49,14 @@ const MyQuery = ({ query }) => {
                 <div className="hero-content flex-col lg:flex-row">
                     <div>
                         <h1 className="text-3xl md:text-5xl font-bold">{query.product}</h1>
-                        <h1 className="text-xl md:text-3xl font-bold">Brand: {query.brand}</h1>
-                        <p className="py-6 text-xl font-semibold">Title: {query.title}</p>
-                        <p>Added Date: {query.added_by.date}</p>
+                        <h1 className="text-xl md:text-3xl mt-4 font-semibold">Brand: {query.brand}</h1>
+                        <p className="py-6 text-xl font-semibold">Title: <span className="text-blue-600">{query.title}</span></p>
+                        <h2 className="text-green-500 font-semibold"><span className="font-semibold  text-black">Posted Date:</span> {query.added_by.date}</h2>
 
 
 
                         <div className="flex items-center justify-around mt-8">
-                            <Link to={`/querydetails/${query._id}`}> <button className="btn bg-blue-600 hover:bg-blue-800 text-xl text-blue-50">Details</button></Link>
+                            <Link to={`/querydetails/${query._id}`}> <button className="btn bg-blue-600 hover:bg-blue-800 text-xl text-blue-50">View Details</button></Link>
                             <div className="space-x-7">
                                 <Link to={`/queryupdate/${query._id}`}> <button className="tooltip text-xl " data-tip="Update"><FaUserEdit /></button></Link>
                                 <button onClick={() => handleDelete(query._id)} className="tooltip text-xl " data-tip="Delete"><FaTrashAlt /></button>

@@ -22,7 +22,7 @@ const MyQueries = () => {
             });
     }, [user]);
 
-console.log(queries)
+
 
 
     return (

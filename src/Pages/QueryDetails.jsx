@@ -33,14 +33,14 @@ const QueryDetails = () => {
                     <div className="card  bg-base-100 shadow-xl">
                         <figure>
                             <img src={item.photo} className="w-[700px]" alt="photo" /></figure>
-                        <h1 className="text-4xl text-center mt-6 font-bold">{item.product}</h1>
+                        <h1 className="text-4xl text-center mt-6 font-bold">{item.title} </h1>
                         <div className="flex mt-4 md:flex-row flex-col">
                             <div className="card-body md:space-y-4 md:px-20 flex-1 border-r-2">
 
 
 
                                 <h1 className="text-3xl font-bold ">Brand: {item.brand}</h1>
-                                <p className="text-xl font-semibold">Title: {item.title}</p>
+                                <p className="text-xl font-semibold"> Name:{item.product}</p>
                                 <p className="font-semibold">Alternation Reason: {item.boycott_reason}</p>
                                 <div className="flex">
                                     <p className="">Posted Date:{item.added_by.date}</p>

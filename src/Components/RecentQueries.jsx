@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import Query from "./Query";
+import RecentQuery from "./RecentQuery";
 
-
-
-const Queries = () => {
-
+const RecentQueries = () => {
 
     const [queries,setQueries] = useState([])
 
@@ -22,11 +19,12 @@ useEffect(()=>{
         <div>
          <div className="grid grid-cols-1 md:mx-20 md:grid-cols-2 lg:grid-cols-4 gap-5">
          {
-            queries.map(query => <Query key={query._id} query={query}></Query>)
+            queries.map(query => <RecentQuery key={query._id} query={query}></RecentQuery>)
           }
          </div>
         </div>
     );
 };
 
-export default Queries;
+
+export default RecentQueries;

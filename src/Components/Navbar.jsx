@@ -68,7 +68,7 @@ const handleLogout = () =>{
 
     return (
 
-        <div className="navbar bg-blue-200 md:px-10 h-20 bg-base-100">
+        <div className="navbar bg-blue-200 md:px-10 h-20">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -80,12 +80,12 @@ const handleLogout = () =>{
     </div>
 
     <div className="flex items-center gap-0">
-        <img className="w-20" src={logo} alt="" />
-    <Link to={'/'} className="font-extrabold text-4xl">ProAlter</Link>
+        <img className="w-16 md:w-20" src={logo} alt="" />
+    <Link to={'/'} className="font-extrabold text-3xl md:text-4xl">ProAlter</Link>
     </div>
 
   </div>
-  <div className="navbar-center hidden lg:flex">
+  <div className="navbar-center hidden lg:flex"> 
     <ul className="menu menu-horizontal px-1">
       {link}
     </ul>
