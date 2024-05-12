@@ -84,17 +84,14 @@ const QueryDetails = () => {
             date
         }
 
-
         fetch('http://localhost:5000/recommendation', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(allinfo)
-
         })
             .then(res => res.json())
             .then(data => {
-                setItems((prevItems) => [...prevItems, data]);
-                console.log(data)
+                setItems(prevItems => [...prevItems, data]);
                 setItem(prevItem => ({
                     ...prevItem,
                     added_by: {
@@ -102,17 +99,14 @@ const QueryDetails = () => {
                         recommendation_count: prevItem.added_by.recommendation_count + 1
                     }
                 }));
-
                 toast.success('Added Successfully');
+                form.reset();
             })
-        form.reset()
-
-
-
-    }
-
-
-
+            .catch(error => {
+                console.error('Error adding recommendation:', error);
+                toast.error('Failed to add recommendation');
+            });
+    };
 
 
 

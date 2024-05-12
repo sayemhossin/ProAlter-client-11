@@ -1,7 +1,7 @@
 
 const RecentQuery = ({ query }) => {
     return (
-        <div className="max-w-md p-6 rounded-md shadow-md dark:bg-blue-100 dark:text-gray-900">
+        <div className=" p-6 rounded-md shadow-md dark:bg-blue-100 dark:text-gray-900">
             <img src={query.photo} alt="" className=" object-fill w-full rounded-md h-72 dark:bg-gray-500" />
 
             <div className="space-y-4 mt-4">
@@ -13,7 +13,7 @@ const RecentQuery = ({ query }) => {
 
                 <div>
                     <h1 className="text-center font-bold underline mt-3">Query Added by</h1>
-                    <div className="flex justify-around items-center">
+                    <div className="flex  justify-around items-center">
                         <h1 className="text-xl"><span className="font-semibold">Name: </span> {query.added_by.name}</h1>
                         <div className="avatar">
                             <div className="md:w-16 w-10 rounded-full ml-4 ring ring-blue-700  ring-offset-2">

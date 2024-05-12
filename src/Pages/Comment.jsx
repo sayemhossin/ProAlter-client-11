@@ -6,7 +6,7 @@ const Comment = ({item}) => {
             <div className="flex space-x-4">
                
                 <div>
-                    <h4 className="font-bold text-xl uppercase">{item.recommended_user_name}</h4>
+                    <h4 className="font-bold dark:text-gray-600 text-xl uppercase">{item.recommended_user_name}</h4>
                     <p className="text-xs dark:text-gray-600">{item.date}</p>
                 </div>
             </div>

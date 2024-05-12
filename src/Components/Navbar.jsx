@@ -110,12 +110,12 @@ const handleLogout = () =>{
   <div>
   <button
           onClick={handleLogout}
-          className="btn p-1 text-[12px] md:text-[17px] md:p-4 bg-[#990000] hover:bg-[#7a1c1c] text-[#ecf0f1]">Logout</button>
+          className="btn p-1 text-[12px] md:text-[17px] md:p-4 bg-blue-600 hover:bg-blue-800  text-[#ecf0f1]">Logout</button>
   </div>
   </>
     :
     <Link to='/login'>
-      <button className="btn  bg-[#990000] hover:bg-[#7a1c1c] text-[#ecf0f1]">Login</button>
+      <button className="btn  bg-blue-600 hover:bg-blue-800 text-[#ecf0f1]">Login</button>
     </Link>
 }
   </div>

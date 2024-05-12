@@ -47,10 +47,10 @@ const Login = () => {
 
 
   return (
- <div className="flex flex-col-reverse lg:flex-row">
+ <div className="flex flex-col lg:flex-row">
 
 <div className=" flex justify-center  w-full lg:ml-20">
-  <img className="w-4/6" src="https://i.ibb.co/RQNRyv4/file-1.png" alt="" />
+  <img className="w-4/6" src="https://i.ibb.co/jHJhw5D/file-4.png" alt="" />
 </div>
 
 
@@ -60,13 +60,13 @@ const Login = () => {
 
 <div className="hero-content flex-col w-full">
   <div className="text-center lg:text-left">
-    <h1 className="text-5xl text-orange-900 font-bold">Login Now!</h1>
+
 
   </div>
   <div className="card shrink-0 w-full max-w-sm  bg-base-100 border-2">
 
     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-
+    <h1 className="text-4xl md:text-5xl text-blue-900 text-center mb-6 font-bold">Login</h1>
       <div className="form-control">
         <label className="label">
           <span className="label-text">Email</span>
@@ -93,20 +93,20 @@ const Login = () => {
 
       </div>
       <div className="form-control mt-6">
-        <button className="btn border-0 bg-[#990000] hover:bg-[#7a1c1c] btn-primary">Login</button>
+        <button className="btn border-0 bg-blue-600 hover:bg-blue-800 btn-primary">Login</button>
       </div>
     </form>
 <div className="divider mx-5">or login with</div>
     <div className="">
 
-      <button onClick={handleGoogleLogin} className="border-2 flex items-center justify-center rounded-xl hover:bg-red-50 border-red-900 py-1 text-red-900 font-bold text-xl gap-2  w-72 mx-auto p-"><FaGoogle className="text-red-700"></FaGoogle> Google</button><br />
+      <button onClick={handleGoogleLogin} className="border-2 flex items-center justify-center rounded-xl hover:bg-blue-50 border-blue-900 py-1 text-blue-900 font-bold text-xl gap-2  w-72 mx-auto p-"><FaGoogle className="text-blue-700"></FaGoogle> Google</button><br />
       
 
     
 
     </div>
     <div>
-      <p className="text-center mt-5 mb-2">Do Not Have Account? <Link className="text-red-800 font-bold" to={'/register'}>Register now</Link></p>
+      <p className="text-center mt-5 mb-2">Do Not Have Account? <Link className="text-blue-800 font-bold" to={'/register'}>Register now</Link></p>
     </div>
   </div>
 </div>

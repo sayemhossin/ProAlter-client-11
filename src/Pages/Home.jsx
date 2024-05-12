@@ -4,7 +4,7 @@ import Slider from "../Components/Slider";
 
 const Home = () => {
     return (
-        <div>
+        <div className="mb-8">
 
             <Slider></Slider>
             <div className="text-center md:mb-20 mb-10">
@@ -17,7 +17,7 @@ const Home = () => {
                 
             </div>
       <RecentQueries></RecentQueries>
-           <h2>home</h2>
+          
         </div>
     );
 };
