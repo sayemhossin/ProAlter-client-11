@@ -34,7 +34,7 @@ const RecommendationsForMe = () => {
                         <table className="table text-gray-300 font-bold  lg:text-2xl">
                     {/* head */}
                     <thead>
-                    <tr className="font-bold bg-blue-400 text-gray-900  lg::text-2xl">
+                    <tr className="font-bold bg-blue-400 text-gray-900  lg:text-2xl">
                             <th>No</th>
                             <th>Query product Name</th>
                             <th> Recommended Product</th>

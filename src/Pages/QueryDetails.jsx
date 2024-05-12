@@ -2,13 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Components/AuthProvider";
 import { toast } from "react-toastify";
+import Comment from "./Comment";
 
 const QueryDetails = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
     const [item, setItem] = useState(null);
-
-
+    const [items, setItems] = useState(null);
+    const [loadingComments, setLoadingComments] = useState(true);
+console.log(items)
 
 
     useEffect(() => {
@@ -19,6 +21,21 @@ const QueryDetails = () => {
             });
 
     }, [id]);
+
+
+useEffect(() => {
+    setLoadingComments(true)
+    fetch(`http://localhost:5000/recommendations/${id}`) 
+        .then(res => res.json())
+        .then(data => {
+            setItems(data);
+            setLoadingComments(false)
+        });
+}, [id]);
+
+
+
+
 
 
 
@@ -76,6 +93,7 @@ const QueryDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setItems((prevItems) => [...prevItems, data]);
                 console.log(data)
                 setItem(prevItem => ({
                     ...prevItem,
@@ -84,7 +102,8 @@ const QueryDetails = () => {
                         recommendation_count: prevItem.added_by.recommendation_count + 1
                     }
                 }));
-                toast.success('Added Successfully')
+             
+            toast.success('Added Successfully');
             })
         form.reset()
 
@@ -183,11 +202,13 @@ const QueryDetails = () => {
 
 {/* comment section */}
 
-
-<div>
-
-</div>
-
+{loadingComments ? (
+                        <div>Loading comments...</div>
+                    ) : (
+                        <div>
+                            {items.map(item => <Comment key={item._id} item={item}></Comment>)}
+                        </div>
+                    )}
 
 
 
