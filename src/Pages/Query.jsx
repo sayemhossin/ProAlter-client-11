@@ -5,7 +5,7 @@ const Query = ({query}) => {
         
         <div className="card flex  bg-base-100 border-2 border-blue-400 p-6  ">
             
-        <div className=" flex h-full justify-center  p-8">
+        <div className=" flex h-full justify-center  ">
         <img className="" src={query.photo} alt="photo" />
 
         </div>

@@ -81,7 +81,7 @@ const Queries = () => {
           </div>
            </div>
 <div className="divider mb-12"></div>
-            <div className={`grid grid-cols-1 md:mx-20 md:grid-cols-2 lg:grid-cols-${grid} gap-5`}>
+            <div className={`grid grid-cols-1 md:mx-5 lg:mx-20 md:grid-cols-2 lg:grid-cols-${grid} gap-5`}>
                 {
                     queries.map(query => <Query key={query._id} query={query}></Query>)
                 }

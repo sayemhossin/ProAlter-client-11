@@ -10,11 +10,11 @@ const QueryDetails = () => {
     const [item, setItem] = useState(null);
     const [items, setItems] = useState(null);
     const [loadingComments, setLoadingComments] = useState(true);
-console.log(items)
+    console.log(items)
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allquery/${id}`) 
+        fetch(`http://localhost:5000/allquery/${id}`)
             .then(res => res.json())
             .then(data => {
                 setItem(data);
@@ -23,15 +23,15 @@ console.log(items)
     }, [id]);
 
 
-useEffect(() => {
-    setLoadingComments(true)
-    fetch(`http://localhost:5000/recommendations/${id}`) 
-        .then(res => res.json())
-        .then(data => {
-            setItems(data);
-            setLoadingComments(false)
-        });
-}, [id]);
+    useEffect(() => {
+        setLoadingComments(true)
+        fetch(`http://localhost:5000/recommendations/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setItems(data);
+                setLoadingComments(false)
+            });
+    }, [id]);
 
 
 
@@ -102,8 +102,8 @@ useEffect(() => {
                         recommendation_count: prevItem.added_by.recommendation_count + 1
                     }
                 }));
-             
-            toast.success('Added Successfully');
+
+                toast.success('Added Successfully');
             })
         form.reset()
 
@@ -123,10 +123,11 @@ useEffect(() => {
 
 
     return (
-        <div >
+        <div className="mb-12">
             {
                 item ? <div className="" >
-                    <div className="card">
+                   <div className="lg:shadow-xl pb-10 lg:p-10 lg:m-10 rounded-xl bg-gray-100">
+                   <div className="card">
                         <figure>
                             <img src={item.photo} className="w-[700px]" alt="photo" /></figure>
                         <h1 className="text-4xl text-center mt-6 font-bold">{item.title} </h1>
@@ -167,30 +168,30 @@ useEffect(() => {
                         </div>
                     </div>
 
-{/* recommendation Form */}
+                    {/* recommendation Form */}
 
-                    <div className="space-y-4 mb-8">
-                        <h2 className="text-3xl font-bold underline text-center mt-8">Add Recommendation</h2>
+                    <div className=" lg:shadow-xs md:p-6 lg:rounded-xl bg-gray-200">
+                        <h2 className="text-3xl font-bold underline text-center mb-6 pt-8 lg:pt-0 mt-8">Add Recommendation</h2>
                         <form onSubmit={handleSubmit}>
-                            <div className="grid md:grid-cols-2 mx-10 md:mx-52 gap-10 ">
+                            <div className="grid md:grid-cols-2 mx-10 lg:mx-52 gap-10 ">
                                 <div>
-                                    <label className="text-xl md:text-2xl font-bold text-blue-500">Recommendation Title:</label><br />
-                                    <input className="bg-blue-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="title" name="title" required />
+                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommendation Title:</label><br />
+                                    <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="title" name="title" required />
                                 </div>
 
                                 <div>
-                                    <label className="text-xl md:text-2xl font-bold text-blue-500">Recommended Product Name:</label><br />
-                                    <input className="bg-blue-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productName" name="productname" required />
+                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommended Product Name:</label><br />
+                                    <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productName" name="productname" required />
                                 </div>
 
                                 <div>
-                                    <label className="text-xl md:text-2xl font-bold text-blue-500">Recommended Product Image:</label><br />
-                                    <input className="bg-blue-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productImage" name="productphoto" required />
+                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommended Product Image:</label><br />
+                                    <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productImage" name="productphoto" required />
                                 </div>
 
                                 <div>
-                                    <label className="text-xl md:text-2xl font-bold text-blue-500">Recommendation Reason:</label><br />
-                                    <textarea className="bg-blue-100 p-4 text-black font-semibold w-full h-14 rounded-lg" id="reason" name="reason" required></textarea>
+                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommendation Reason:</label><br />
+                                    <textarea className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" id="reason" name="reason" required></textarea>
                                 </div>
 
                             </div>
@@ -200,13 +201,20 @@ useEffect(() => {
                         </form>
                     </div>
 
-{/* comment section */}
+                   </div>
+                    {/* comment section */}
 
-{loadingComments ? (
+                    {loadingComments ? (
                         <div>Loading comments...</div>
                     ) : (
                         <div>
-                            {items.map(item => <Comment key={item._id} item={item}></Comment>)}
+ <div className="text-center md:mb-20 mb-10">
+                <h1 className="text-xl mt-10 md:text-4xl md:mt-20   font-bold text-blue-900">This Queries Recommendation Are Hare</h1>
+                
+            </div>
+                            <div className="grid gap-6">
+                                {items.map(item => <Comment key={item._id} item={item}></Comment>)}
+                            </div>
                         </div>
                     )}
 

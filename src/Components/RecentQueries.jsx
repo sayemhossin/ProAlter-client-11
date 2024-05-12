@@ -17,7 +17,7 @@ useEffect(()=>{
 
     return (
         <div>
-         <div className="grid grid-cols-1 md:mx-20 md:grid-cols-2 lg:grid-cols-4 gap-5">
+         <div className="grid grid-cols-1  md:mx-2 lg:mx-20 md:grid-cols-2 lg:grid-cols-4 gap-5">
          {
             queries.map(query => <RecentQuery key={query._id} query={query}></RecentQuery>)
           }
