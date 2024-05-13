@@ -30,7 +30,7 @@ const UpdateQuery = () => {
         }
 
 
-        fetch(`http://localhost:5000/allquery/${item._id}`, {
+        fetch(`http://localhost:5000/allquery/${item._id}`,{credentials:'include'}, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateData)

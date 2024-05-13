@@ -46,7 +46,7 @@ const handleToggle = (e) =>{
   <input
   onChange={handleToggle}
    type="checkbox"
-    
+   checked={theme === 'light' ? false : true}
      className="toggle
       theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
 
@@ -80,8 +80,8 @@ const handleLogout = () =>{
     </div>
 
     <div className="flex items-center gap-0">
-        <img className="w-16 md:w-20" src={logo} alt="" />
-    <Link to={'/'} className="font-extrabold text-3xl md:text-4xl">ProAlter</Link>
+        <img className="w-10 md:w-14" src={logo} alt="" />
+    <Link to={'/'} className="font-extrabold ml-2 md:ml-4 text-3xl md:text-4xl">Pro<span className="text-blue-600 ">Alter</span></Link>
     </div>
 
   </div>
@@ -97,7 +97,7 @@ const handleLogout = () =>{
   <input
   onChange={handleToggle}
    type="checkbox"
-    
+   checked={theme === 'light' ? false : true}
      className="toggle
       theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
 

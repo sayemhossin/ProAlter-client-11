@@ -1,4 +1,5 @@
 import Banner from "../Components/Banner";
+import Contac from "../Components/Contac";
 import RecentQueries from "../Components/RecentQueries";
 import Slider from "../Components/Slider";
 
@@ -17,6 +18,7 @@ const Home = () => {
                 
             </div>
       <RecentQueries></RecentQueries>
+      <Contac></Contac>
           
         </div>
     );

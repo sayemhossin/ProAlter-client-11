@@ -9,18 +9,20 @@ const MyQueries = () => {
   const [loading, setLoading] = useState(true);
 
 
-
+const url = `http://localhost:5000/myquery/${user?.email}`
 
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`http://localhost:5000/myquery/${user?.email}`)
+    if(user?.email){
+      setLoading(true);
+    fetch(url, {credentials:'include'})
       .then((res) => res.json())
       .then((data) => {
         setQueries(data);
         setLoading(false);
       });
-  }, [user]);
+    }
+  }, [user,url]);
   const handleDeleteQuery = (queryId) => {
     setQueries(prevQueries => prevQueries.filter(query => query._id !== queryId));
   };
@@ -49,7 +51,10 @@ const MyQueries = () => {
 
 
       {loading ? (
-        <p>Loading...</p>
+       <div className="h-screen flex w-full justify-center items-center">
+       <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+           
+           </div>
       ) : queries.length === 0 ? (
         <div>
 

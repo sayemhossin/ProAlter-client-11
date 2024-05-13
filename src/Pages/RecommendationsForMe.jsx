@@ -18,7 +18,10 @@ const RecommendationsForMe = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="h-screen flex w-full justify-center items-center">
+            <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+                
+                </div>;
     }
 
     return (

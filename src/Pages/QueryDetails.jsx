@@ -14,7 +14,7 @@ const QueryDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allquery/${id}`)
+        fetch(`http://localhost:5000/allquery/${id}`,{credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 setItem(data);
@@ -25,7 +25,7 @@ const QueryDetails = () => {
 
     useEffect(() => {
         setLoadingComments(true)
-        fetch(`http://localhost:5000/recommendations/${id}`)
+        fetch(`http://localhost:5000/recommendations/${id}`,{credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 setItems(data);
@@ -199,7 +199,10 @@ const QueryDetails = () => {
                     {/* comment section */}
 
                     {loadingComments ? (
-                        <div>Loading comments...</div>
+                       <div className="h-screen flex w-full justify-center items-center">
+                       <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+                           
+                           </div>
                     ) : (
                         <div>
  <div className="text-center md:mb-20 mb-10">
@@ -213,20 +216,10 @@ const QueryDetails = () => {
                     )}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div> : <div>Loading</div>
+                </div> : <div className="h-screen flex w-full justify-center items-center">
+            <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+                
+                </div>
             }
         </div>
     );

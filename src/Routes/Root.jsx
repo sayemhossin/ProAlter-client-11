@@ -10,8 +10,12 @@ const Root = () => {
            <Navbar></Navbar>
            </div>
            <div className="pt-20">
+           <div className="">
            <Outlet></Outlet>
-           <Footer></Footer>
+           </div>
+         <div className="">
+         <Footer></Footer>
+         </div>
            <ToastContainer />
            </div>
         </div>

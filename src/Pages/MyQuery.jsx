@@ -45,7 +45,9 @@ const MyQuery = ({ query ,onDelete}) => {
     return (
         <div className=" lg:mx-40  py-4  border-2 rounded-xl">
             <div className="flex lg:gap-28 flex-col lg:flex-row">
-                <img src={query.photo} className="md:max-w-sm md:mx-auto lg:mx-5 mt-3 rounded-lg " />
+             
+               <img src={query.photo} className="lg:w-[400px] md:max-w-sm md:mx-auto lg:mx-5 mt-3 rounded-lg " />
+            
                 <div className="hero-content flex-col lg:flex-row">
                     <div>
                         <h1 className="text-3xl md:text-5xl font-bold">{query.product}</h1>

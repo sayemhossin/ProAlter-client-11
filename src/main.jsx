@@ -18,6 +18,7 @@ import Error from './Pages/Error';
 import AddQuery from './Pages/AddQuery';
 import QueryDetails from './Pages/QueryDetails';
 import UpdateQuery from './Pages/UpdateQuery';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -39,11 +40,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/myqueries',
-        element: <MyQueries></MyQueries>
+        element: <PrivateRoute><MyQueries></MyQueries></PrivateRoute>
       },
       {
         path: '/myrecommendations',
-        element: <MyRecommendations></MyRecommendations>
+        element: <PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
       },
       {
         path: '/login',
@@ -55,16 +56,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/addquery',
-        element: <AddQuery></AddQuery>
+        element: <PrivateRoute><AddQuery></AddQuery></PrivateRoute>
       },
       {
         path: '/querydetails/:id',
-        element: <QueryDetails></QueryDetails>,
+        element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`)
       },
       {
         path:'/queryupdate/:id',
-        element: <UpdateQuery></UpdateQuery>,
+        element: <PrivateRoute><UpdateQuery></UpdateQuery></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`)
       }
     ]

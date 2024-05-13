@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { AuthContext } from "../Components/AuthProvider";
 import {  FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 
 
@@ -23,9 +24,16 @@ const Login = () => {
     const { email, password } = data
 
     signIn(email, password)
-      .then(() => {
-        navigate(location?.state ? location.state : '/')
+      .then((result) => {
+        const user = {email}
+        axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+        .then(data =>{
+          if(data.data.success){
+             navigate(location?.state ? location.state : '/')
         toast.success('Login Success')
+          }
+        })
+       
       })
       .catch(() => {
         toast.error('something went wrong')

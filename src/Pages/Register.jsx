@@ -4,9 +4,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/AuthProvider";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Register = () => {
-    const { createUser, updateUserProfile,logOut } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
 
     const [passwordValidation,setPasswordValidation] = useState('') 
     const [show,setShow]= useState(false)
@@ -46,10 +47,16 @@ const Register = () => {
           .then(() => {
             updateUserProfile(name, photo)
               .then(() => {
-                toast.success('Registered Successfully')
-                logOut()
-                .then()
-                navigate('/login')
+                const user = {email}
+                axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+                .then(data =>{
+                  if(data.data.success){
+                     navigate('/')
+                toast.success('Register Success')
+                  }
+                })
+               
+               
               })
           })
           .catch(err => {

@@ -44,7 +44,10 @@ const MyRecommendations = () => {
             <div>
                 <h2 className="text-2xl md:text-5xl pt-8 pb-8 text-blue-400 underline text-center font-extrabold">My recommendations</h2>
                 {loading ? (
-                    <p>Loading...</p>
+                    <div className="h-screen flex w-full justify-center items-center">
+                    <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+                        
+                        </div>
                 ) : (
                     <div className="overflow-x-auto text-white h-[50vh] md:h-[80vh]">
                         <table className="table text-gray-300 font-bold  lg:text-2xl">

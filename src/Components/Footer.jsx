@@ -1,4 +1,4 @@
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import logo from '../assets/image/logo.png'
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
             <div className="lg:w-1/3">
                 <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                    <div className="flex items-center justify-center w-20 h-12 rounded-full ">
+                    <div className="flex items-center justify-center w-14 h-12 rounded-full ">
                        <img src={logo} alt="" />
                     </div>
                     <span className="self-center text-5xl font-semibold">ProAlter</span>
@@ -59,14 +59,14 @@ const Footer = () => {
                 <div className="space-y-3">
                     <div className="uppercase dark:text-blue-300">Social media</div>
                     <div className="flex justify-start space-x-3">
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/" title="Facebook" className="flex items-center p-1">
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sayem.hossin.982" title="Facebook" className="flex items-center p-1">
                             <FaFacebook className="text-xl"/>
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="#" title="Twitter" className="flex items-center p-1">
                            <FaLinkedin className="text-xl"></FaLinkedin>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="Instagram" className="flex items-center p-1">
-                            
+                        <a target="_blank" rel="noopener noreferrer" href="https://x.com/Sayem112233?t=5Xsu6d_2JSP0uPIvYmIOdA&s=07" title="Instagram" className="flex items-center p-1">
+                            <FaTwitter className="text-xl"/>
                         </a>
                     </div>
                 </div>
