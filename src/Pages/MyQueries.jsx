@@ -13,7 +13,7 @@ const url = `http://localhost:5000/myquery/${user?.email}`
 
 
   useEffect(() => {
-    if(user?.email){
+   
       setLoading(true);
     fetch(url, {credentials:'include'})
       .then((res) => res.json())
@@ -21,7 +21,7 @@ const url = `http://localhost:5000/myquery/${user?.email}`
         setQueries(data);
         setLoading(false);
       });
-    }
+  
   }, [user,url]);
   const handleDeleteQuery = (queryId) => {
     setQueries(prevQueries => prevQueries.filter(query => query._id !== queryId));

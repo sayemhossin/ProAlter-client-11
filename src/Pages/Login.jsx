@@ -24,7 +24,7 @@ const Login = () => {
     const { email, password } = data
 
     signIn(email, password)
-      .then((result) => {
+      .then(() => {
         const user = {email}
         axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
         .then(data =>{
@@ -44,10 +44,17 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {
-        toast.success('Login Success')
-        navigate(location?.state ? location.state : '/')
+    .then((result) => {
+      
+      axios.post('http://localhost:5000/jwt',{email:result?.user?.email},{withCredentials:true})
+      .then(data =>{
+        if(data.data.success){
+           navigate(location?.state ? location.state : '/')
+      toast.success('Login Success')
+        }
       })
+     
+    })
       .catch(err => console.log(err))
   }
 

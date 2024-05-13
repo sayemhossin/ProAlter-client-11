@@ -60,8 +60,8 @@ const MyQuery = ({ query ,onDelete}) => {
                         <div className="flex items-center justify-around mt-8">
                             <Link to={`/querydetails/${query._id}`}> <button className="btn bg-blue-600 hover:bg-blue-800 text-xl text-blue-50">View Details</button></Link>
                             <div className="space-x-7">
-                                <Link to={`/queryupdate/${query._id}`}> <button className="tooltip text-xl " data-tip="Update"><FaUserEdit /></button></Link>
-                                <button onClick={() => handleDelete(query._id)} className="tooltip text-xl " data-tip="Delete"><FaTrashAlt /></button>
+                                <Link to={`/queryupdate/${query._id}`}> <button className="btn btn-outline hover:bg-gray-200  tooltip text-xl " data-tip="Update"><FaUserEdit className="text-black" /></button></Link>
+                                <button onClick={() => handleDelete(query._id)} className="btn btn-outline hover:bg-gray-200  tooltip text-xl  " data-tip="Delete"><FaTrashAlt className="text-black"/></button>
                             </div>
                         </div>
 

@@ -8,7 +8,7 @@ const UpdateQuery = () => {
     const { user } = useContext(AuthContext)
 
     const item = useLoaderData()
-    console.log(item)
+
 
 
 

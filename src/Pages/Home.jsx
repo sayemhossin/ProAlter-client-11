@@ -1,5 +1,6 @@
 import Banner from "../Components/Banner";
 import Contac from "../Components/Contac";
+import ExtraSection from "../Components/ExtraSection";
 import RecentQueries from "../Components/RecentQueries";
 import Slider from "../Components/Slider";
 
@@ -19,7 +20,7 @@ const Home = () => {
             </div>
       <RecentQueries></RecentQueries>
       <Contac></Contac>
-          
+          <ExtraSection></ExtraSection>
         </div>
     );
 };

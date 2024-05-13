@@ -61,12 +61,12 @@ const router = createBrowserRouter([
       {
         path: '/querydetails/:id',
         element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`,{credentials:'include'})
       },
       {
         path:'/queryupdate/:id',
         element: <PrivateRoute><UpdateQuery></UpdateQuery></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`,{credentials:'include'})
       }
     ]
   },

@@ -10,11 +10,11 @@ const QueryDetails = () => {
     const [item, setItem] = useState(null);
     const [items, setItems] = useState(null);
     const [loadingComments, setLoadingComments] = useState(true);
-    console.log(items)
+
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allquery/${id}`,{credentials:'include'})
+        fetch(`http://localhost:5000/allquery/${id}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setItem(data);
@@ -25,7 +25,7 @@ const QueryDetails = () => {
 
     useEffect(() => {
         setLoadingComments(true)
-        fetch(`http://localhost:5000/recommendations/${id}`,{credentials:'include'})
+        fetch(`http://localhost:5000/recommendations/${id}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setItems(data);
@@ -85,31 +85,42 @@ const QueryDetails = () => {
         }
 
         fetch('http://localhost:5000/recommendation', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(allinfo)
-        })
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(allinfo)
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Update UI state with newly added comment
+        setItems(prevItems => [...prevItems, data]);
+        setItem(prevItem => ({
+            ...prevItem,
+            added_by: {
+                ...prevItem.added_by,
+                recommendation_count: prevItem.added_by.recommendation_count + 1
+            }
+        }));
+
+        // Show success message and reset form
+        toast.success('Added Successfully');
+        form.reset();
+
+        // Fetch updated comments after adding a new comment
+        fetch(`http://localhost:5000/recommendations/${id}`, { credentials: 'include' })
             .then(res => res.json())
-            .then(data => {
-                setItems(prevItems => [...prevItems, data]);
-                setItem(prevItem => ({
-                    ...prevItem,
-                    added_by: {
-                        ...prevItem.added_by,
-                        recommendation_count: prevItem.added_by.recommendation_count + 1
-                    }
-                }));
-                toast.success('Added Successfully');
-                form.reset();
+            .then(updatedData => {
+                // Update state with updated comments
+                setItems(updatedData);
             })
             .catch(error => {
-                console.error('Error adding recommendation:', error);
-                toast.error('Failed to add recommendation');
+                console.error('Error fetching updated comments:', error);
             });
-    };
-
-
-
+    })
+    .catch(error => {
+        console.error('Error adding recommendation:', error);
+        toast.error('Failed to add recommendation');
+    });
+};
 
 
 
@@ -120,105 +131,107 @@ const QueryDetails = () => {
         <div className="mb-12">
             {
                 item ? <div className="" >
-                   <div className="lg:shadow-xl pb-10 lg:p-10 lg:m-10 rounded-xl bg-gray-100">
-                   <div className="card">
-                        <figure>
-                            <img src={item.photo} className="w-[700px]" alt="photo" /></figure>
-                        <h1 className="text-4xl text-center mt-6 font-bold">{item.title} </h1>
-                        <div className="flex mt-4 md:flex-row flex-col">
+                    <div className="lg:shadow-xl pb-10 lg:p-10 lg:m-10 rounded-xl bg-gray-100">
+                        <div className="card">
+                            <figure>
+                                <img src={item.photo} className="w-[700px]" alt="photo" /></figure>
+                            <h1 className="text-4xl text-center mt-6 font-bold">{item.title} </h1>
+                            <div className="flex mt-4 md:flex-row flex-col">
 
-                            <div className="card-body md:space-y-4 md:px-20 flex-1 border-r-2">
-
-
-
-                                <h1 className="text-3xl font-bold ">Brand: {item.brand}</h1>
-                                <p className="text-xl font-semibold"> Name:{item.product}</p>
-                                <p className="font-semibold">Alternation Reason: {item.boycott_reason}</p>
-                                <div className="flex">
-                                    <p className="">Posted Date:{item.added_by.date}</p>
-                                    <p className="">Recommendation Count: <span className="font-bold">{item.added_by.recommendation_count}</span></p>
-                                </div>
-                            </div>
+                                <div className="card-body md:space-y-4 md:px-20 flex-1 border-r-2">
 
 
-                            <div className="flex-1 text-center">
-                                <h1 className="text-center text-xl font-semibold underline mb-9">Query Added By</h1>
 
-
-                                <div>
-                                    <div className="avatar">
-                                        <div className="w-28 rounded">
-                                            <img src={item.added_by.photo} />
-                                        </div>
+                                    <h1 className="text-3xl font-bold ">Brand: {item.brand}</h1>
+                                    <p className="text-xl font-semibold"> Name:{item.product}</p>
+                                    <p className="font-semibold">Alternation Reason: {item.boycott_reason}</p>
+                                    <div className="flex">
+                                        <p className="">Posted Date:{item.added_by.date}</p>
+                                        <p className="">Recommendation Count: <span className="font-bold">{item.added_by.recommendation_count}</span></p>
                                     </div>
-
-
                                 </div>
-                                <div>
-                                    <h2 className="text-2xl font-semibold">Name:{item.added_by.name}</h2>
-                                    <span className="text-sm dark:text-gray-600">Email: {item.added_by.email}</span>
+
+
+                                <div className="flex-1 text-center">
+                                    <h1 className="text-center text-xl font-semibold underline mb-9">Query Added By</h1>
+
+
+                                    <div>
+                                        <div className="avatar">
+                                            <div className="w-28 rounded">
+                                                <img src={item.added_by.photo} />
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div>
+                                        <h2 className="text-2xl font-semibold">Name:{item.added_by.name}</h2>
+                                        <span className="text-sm dark:text-gray-600">Email: {item.added_by.email}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        {/* recommendation Form */}
+
+                        <div className=" lg:shadow-xs md:p-6 lg:rounded-xl bg-gray-200">
+                            <h2 className="text-3xl font-bold underline text-center mb-6 pt-8 lg:pt-0 mt-8">Add Recommendation</h2>
+                            <form onSubmit={handleSubmit}>
+                                <div className="grid md:grid-cols-2 mx-10 lg:mx-52 gap-10 ">
+                                    <div>
+                                        <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommendation Title:</label><br />
+                                        <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="title" name="title" required />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommended Product Name:</label><br />
+                                        <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productName" name="productname" required />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommended Product Image:</label><br />
+                                        <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productImage" name="productphoto" required />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommendation Reason:</label><br />
+                                        <textarea className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" id="reason" name="reason" required></textarea>
+                                    </div>
+
+                                </div>
+                                <div className="text-end mr-[15%]">
+                                    <input className="text-center btn hover:bg-blue-600 btn-outline mt-9" type="submit" value="Add Recommendation" />
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
-
-                    {/* recommendation Form */}
-
-                    <div className=" lg:shadow-xs md:p-6 lg:rounded-xl bg-gray-200">
-                        <h2 className="text-3xl font-bold underline text-center mb-6 pt-8 lg:pt-0 mt-8">Add Recommendation</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="grid md:grid-cols-2 mx-10 lg:mx-52 gap-10 ">
-                                <div>
-                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommendation Title:</label><br />
-                                    <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="title" name="title" required />
-                                </div>
-
-                                <div>
-                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommended Product Name:</label><br />
-                                    <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productName" name="productname" required />
-                                </div>
-
-                                <div>
-                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommended Product Image:</label><br />
-                                    <input className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" type="text" id="productImage" name="productphoto" required />
-                                </div>
-
-                                <div>
-                                    <label className="text-xl lg:text-2xl font-bold text-gray-600">Recommendation Reason:</label><br />
-                                    <textarea className="bg-gray-100 p-4 text-black font-semibold w-full h-14 rounded-lg" id="reason" name="reason" required></textarea>
-                                </div>
-
-                            </div>
-                            <div className="text-end mr-[15%]">
-                                <input className="text-center btn hover:bg-blue-600 btn-outline mt-9" type="submit" value="Add Recommendation" />
-                            </div>
-                        </form>
-                    </div>
-
-                   </div>
                     {/* comment section */}
 
                     {loadingComments ? (
-                       <div className="h-screen flex w-full justify-center items-center">
-                       <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
-                           
-                           </div>
+                        <div className="h-screen flex w-full justify-center items-center">
+                            <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+
+                        </div>
                     ) : (
                         <div>
- <div className="text-center md:mb-20 mb-10">
-                <h1 className="text-xl mt-10 md:text-4xl md:mt-20   font-bold text-blue-900">This Queries Recommendation Are Hare</h1>
-                
-            </div>
+                            <div className="text-center md:mb-20 mb-10">
+                                <h1 className="text-xl mt-10 md:text-4xl md:mt-20   font-bold text-blue-900">This Queries Recommendation Are Hare</h1>
+
+                            </div>
                             <div className="grid gap-6">
-                                {items.map(item => <Comment key={item._id} item={item}></Comment>)}
+                                {items.map((item,idx) => <Comment key={idx} item={item}></Comment>)}
+
+
                             </div>
                         </div>
                     )}
 
 
                 </div> : <div className="h-screen flex w-full justify-center items-center">
-            <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
-                
+                    <span className="loading  text-blue-500 loading-spinner loading-lg"></span>
+
                 </div>
             }
         </div>
