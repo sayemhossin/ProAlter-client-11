@@ -9,7 +9,7 @@ const Slide = ({ image, text }) => {
     >
       <div className='flex items-center justify-center w-full  h-full bg-gray-900/70'>
         <div className='text-center md:px-20 '>
-          <i className='text-xs md:text-2xl text-blue-400  font-semibold  lg:text-2xl'>
+          <i className='text-xs md:text-2xl text-blue-400  font-semibold  lg:text-4xl'>
             {text}
           </i>
           <br />

@@ -28,16 +28,13 @@ const AuthProvider = ({children}) => {
 
 
     
-    const logOut = async () => {
+  
+     const logOut = () =>{
         setLoading(true)
-        const { data } = await axios('http://localhost:5173/logout/logout', {
-          withCredentials: true,
-        })
-        console.log(data)
+        axios('https://assignment-11-server-pi-six.vercel.app/logout',{withCredentials:true})
         return signOut(auth)
-      }
+    }
     
-
 
 
 
