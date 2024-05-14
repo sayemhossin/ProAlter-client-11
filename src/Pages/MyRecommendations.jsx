@@ -14,7 +14,7 @@ const MyRecommendations = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/myrecommendetion/${user?.email}`)
+        fetch(`https://assignment-11-server-pi-six.vercel.app/myrecommendetion/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setMyRecommendations(data);

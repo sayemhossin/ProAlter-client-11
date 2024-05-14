@@ -3,6 +3,11 @@ import Navbar from "../Components/Navbar";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import Footer from "../Components/Footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+// ..
+AOS.init();
+
 const Root = () => {
     return (
         <div>

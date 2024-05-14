@@ -48,7 +48,7 @@ const Register = () => {
             updateUserProfile(name, photo)
               .then(() => {
                 const user = {email}
-                axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+                axios.post('https://assignment-11-server-pi-six.vercel.app/jwt',user,{withCredentials:true})
                 .then(data =>{
                   if(data.data.success){
                      navigate('/')

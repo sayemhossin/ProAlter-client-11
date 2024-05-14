@@ -26,7 +26,7 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         const user = {email}
-        axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+        axios.post('https://assignment-11-server-pi-six.vercel.app/jwt',user,{withCredentials:true})
         .then(data =>{
           if(data.data.success){
              navigate(location?.state ? location.state : '/')
@@ -46,7 +46,7 @@ const Login = () => {
     googleLogin()
     .then((result) => {
       
-      axios.post('http://localhost:5000/jwt',{email:result?.user?.email},{withCredentials:true})
+      axios.post('https://assignment-11-server-pi-six.vercel.app/jwt',{email:result?.user?.email},{withCredentials:true})
       .then(data =>{
         if(data.data.success){
            navigate(location?.state ? location.state : '/')

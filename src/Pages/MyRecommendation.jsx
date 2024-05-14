@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-
+import PropTypes from 'prop-types';
 const MyRecommendation = ({item,idx,onDelete}) => {
     const handleDelete = (id) => {
         Swal.fire({
@@ -12,7 +12,7 @@ const MyRecommendation = ({item,idx,onDelete}) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/recommendation/${id}`, {
+                fetch(`https://assignment-11-server-pi-six.vercel.app/recommendation/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -49,5 +49,12 @@ const MyRecommendation = ({item,idx,onDelete}) => {
       </tr>
     );
 };
+
+
+MyRecommendation.propTypes ={
+    item:PropTypes.object,
+    idx:PropTypes.number,
+    onDelete:PropTypes.func
+  }
 
 export default MyRecommendation;

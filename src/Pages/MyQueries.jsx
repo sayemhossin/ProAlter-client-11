@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Components/AuthProvider";
 import MyQuery from "./MyQuery";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
@@ -9,7 +10,7 @@ const MyQueries = () => {
   const [loading, setLoading] = useState(true);
 
 
-const url = `http://localhost:5000/myquery/${user?.email}`
+const url = `https://assignment-11-server-pi-six.vercel.app/myquery/${user?.email}`
 
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const url = `http://localhost:5000/myquery/${user?.email}`
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl md:text-6xl text-blue-200 font-bold">Dive into Your Queries</h1>
+              <h1 className="mb-5 text-5xl md:text-6xl text-blue-200 font-bold">Dive into Your <span >  <Typewriter words={['Queries']}  loop={3} /></span></h1>
 
               <Link to={'/addquery'}> <button className="btn hover:bg-blue-800 mt-6  text-white bg-blue-600">Add Query</button></Link>
             </div>
@@ -64,7 +65,7 @@ const url = `http://localhost:5000/myquery/${user?.email}`
             <div className="hero-content flex-col lg:flex-row-reverse">
               <img src="https://i.ibb.co/FsVxJ6L/file-3.png" className=" rounded-lg " />
               <div>
-                <h1 className="text-2xl md:text-5xl text-blue-800 font-bold">Opps! <br /> Looks Like You Don't Added Any Queries</h1>
+                <h1 className="text-2xl md:text-5xl text-blue-800 font-bold">Opps! <br /> Looks Like You Do not Added Any Queries</h1>
 
                 <Link to={'/addquery'}> <button className="btn hover:bg-blue-800 mt-6  text-white bg-blue-600">Add Query</button></Link>
               </div>

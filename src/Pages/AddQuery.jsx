@@ -40,7 +40,7 @@ const AddQuery = () => {
         }
 
 
-        fetch('http://localhost:5000/allquery', {
+        fetch('https://assignment-11-server-pi-six.vercel.app/allquery', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(allData)

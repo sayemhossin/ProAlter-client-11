@@ -14,7 +14,7 @@ const QueryDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allquery/${id}`, { credentials: 'include' })
+        fetch(`https://assignment-11-server-pi-six.vercel.app/allquery/${id}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setItem(data);
@@ -25,7 +25,7 @@ const QueryDetails = () => {
 
     useEffect(() => {
         setLoadingComments(true)
-        fetch(`http://localhost:5000/recommendations/${id}`, { credentials: 'include' })
+        fetch(`https://assignment-11-server-pi-six.vercel.app/recommendations/${id}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setItems(data);
@@ -84,43 +84,43 @@ const QueryDetails = () => {
             date
         }
 
-        fetch('http://localhost:5000/recommendation', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(allinfo)
-    })
-    .then(res => res.json())
-    .then(data => {
-        // Update UI state with newly added comment
-        setItems(prevItems => [...prevItems, data]);
-        setItem(prevItem => ({
-            ...prevItem,
-            added_by: {
-                ...prevItem.added_by,
-                recommendation_count: prevItem.added_by.recommendation_count + 1
-            }
-        }));
-
-        // Show success message and reset form
-        toast.success('Added Successfully');
-        form.reset();
-
-        // Fetch updated comments after adding a new comment
-        fetch(`http://localhost:5000/recommendations/${id}`, { credentials: 'include' })
+        fetch('https://assignment-11-server-pi-six.vercel.app/recommendation', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(allinfo)
+        })
             .then(res => res.json())
-            .then(updatedData => {
-                // Update state with updated comments
-                setItems(updatedData);
+            .then(data => {
+                // Update UI state with newly added comment
+                setItems(prevItems => [...prevItems, data]);
+                setItem(prevItem => ({
+                    ...prevItem,
+                    added_by: {
+                        ...prevItem.added_by,
+                        recommendation_count: prevItem.added_by.recommendation_count + 1
+                    }
+                }));
+
+
+                toast.success('Added Successfully');
+                form.reset();
+
+
+                fetch(`https://assignment-11-server-pi-six.vercel.app/recommendations/${id}`, { credentials: 'include' })
+                    .then(res => res.json())
+                    .then(updatedData => {
+
+                        setItems(updatedData);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching updated comments:', error);
+                    });
             })
             .catch(error => {
-                console.error('Error fetching updated comments:', error);
+                console.error('Error adding recommendation:', error);
+                toast.error('Failed to add recommendation');
             });
-    })
-    .catch(error => {
-        console.error('Error adding recommendation:', error);
-        toast.error('Failed to add recommendation');
-    });
-};
+    };
 
 
 
@@ -221,7 +221,7 @@ const QueryDetails = () => {
 
                             </div>
                             <div className="grid gap-6">
-                                {items.map((item,idx) => <Comment key={idx} item={item}></Comment>)}
+                                {items.map((item, idx) => <Comment key={idx} item={item}></Comment>)}
 
 
                             </div>

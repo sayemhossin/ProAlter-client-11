@@ -5,7 +5,7 @@ const RecommendationsForMe = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/recommendation')
+        fetch('https://assignment-11-server-pi-six.vercel.app/recommendation')
             .then(res => res.json())
             .then(data => {
                 setItems(data);

@@ -1,7 +1,7 @@
 import { FaTrashAlt, FaUserEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import PropTypes from 'prop-types';
 
 const MyQuery = ({ query ,onDelete}) => {
 
@@ -17,7 +17,7 @@ const MyQuery = ({ query ,onDelete}) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/allquery/${id}`, {
+                fetch(`https://assignment-11-server-pi-six.vercel.app/allquery/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -43,7 +43,7 @@ const MyQuery = ({ query ,onDelete}) => {
 
 
     return (
-        <div className=" lg:mx-40  py-4  border-2 rounded-xl">
+        <div className=" lg:mx-40  py-4  border-2 border-blue-200 rounded-xl">
             <div className="flex lg:gap-28 flex-col lg:flex-row">
              
                <img src={query.photo} className="lg:w-[400px] md:max-w-sm md:mx-auto lg:mx-5 mt-3 rounded-lg " />
@@ -57,13 +57,15 @@ const MyQuery = ({ query ,onDelete}) => {
 
 
 
-                        <div className="flex items-center justify-around mt-8">
+                       
+                       <div className=" flex gap-4 md:ml-[300px] md:gap-32  mt-8">
                             <Link to={`/querydetails/${query._id}`}> <button className="btn bg-blue-600 hover:bg-blue-800 text-xl text-blue-50">View Details</button></Link>
-                            <div className="space-x-7">
+                            <div className="space-x-7 flex ">
                                 <Link to={`/queryupdate/${query._id}`}> <button className="btn btn-outline hover:bg-gray-200  tooltip text-xl " data-tip="Update"><FaUserEdit className="text-black" /></button></Link>
                                 <button onClick={() => handleDelete(query._id)} className="btn btn-outline hover:bg-gray-200  tooltip text-xl  " data-tip="Delete"><FaTrashAlt className="text-black"/></button>
-                            </div>
+                           
                         </div>
+                       </div>
 
 
 
@@ -83,7 +85,10 @@ const MyQuery = ({ query ,onDelete}) => {
 
 
 
-
+    MyQuery.propTypes ={
+        query:PropTypes.object,
+        onDelete:PropTypes.func
+  }
 
 
 

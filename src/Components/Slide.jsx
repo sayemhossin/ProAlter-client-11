@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 const Slide = ({ image, text }) => {
   return (
     <div
@@ -19,5 +19,15 @@ const Slide = ({ image, text }) => {
     </div>
   )
 }
+
+
+
+Slide.propTypes = {
+  image: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+};
+
+
+
 
 export default Slide

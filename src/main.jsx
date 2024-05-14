@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/recommendationsforme',
-        element: <RecommendationsForMe></RecommendationsForMe>
+        element: <PrivateRoute><RecommendationsForMe></RecommendationsForMe></PrivateRoute>
       },
       {
         path: '/myqueries',
@@ -61,12 +61,12 @@ const router = createBrowserRouter([
       {
         path: '/querydetails/:id',
         element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`,{credentials:'include'})
+        loader: ({ params }) => fetch(`https://assignment-11-server-pi-six.vercel.app/allquery/${params.id}`,{credentials:'include'})
       },
       {
         path:'/queryupdate/:id',
         element: <PrivateRoute><UpdateQuery></UpdateQuery></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allquery/${params.id}`,{credentials:'include'})
+        loader: ({ params }) => fetch(`https://assignment-11-server-pi-six.vercel.app/allquery/${params.id}`,{credentials:'include'})
       }
     ]
   },

@@ -10,7 +10,7 @@ const Queries = () => {
 
     useEffect(() => {
         setIsLoading(true); // Start loading
-        fetch(`http://localhost:5000/allquerys?search=${search}`)
+        fetch(`https://assignment-11-server-pi-six.vercel.app/allquerys?search=${search}`)
             .then(res => res.json())
             .then(data => {
                 setQueries(data);

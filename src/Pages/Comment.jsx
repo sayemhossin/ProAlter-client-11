@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 const Comment = ({item}) => {
     return (
         <div className="container flex flex-col w-full  p-6 mx-auto divide-y rounded-md dark:divide-gray-300 border-2 dark:text-gray-800">
@@ -28,5 +28,12 @@ const Comment = ({item}) => {
     </div>
     );
 };
+
+Comment.propTypes ={
+    item:PropTypes.object
+  }
+  
+
+
 
 export default Comment;

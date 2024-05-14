@@ -30,7 +30,7 @@ const UpdateQuery = () => {
         }
 
 
-        fetch(`http://localhost:5000/allquery/${item._id}`,{credentials:'include'}, {
+        fetch(`https://assignment-11-server-pi-six.vercel.app/allquery/${item._id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateData)
