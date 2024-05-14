@@ -1,6 +1,5 @@
 # ProAlter
 
-![ProAlter Preview](https://pro-alter.web.app)
 
 ProAlter is a web application that serves as an Alternative Product Information System. Users can explore alternative products, add queries about products, view recommendations, and interact with other users.
 
